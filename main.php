@@ -17,7 +17,7 @@
     ?>
     
     <input type="button" value="로그아웃" onClick="location.href='index.html'" style="float: right;">
-    <input type="button" value="로그아웃" onClick="location.href='cart.html'" style="float: right;">
+    <input type="button" value="장바구니" onClick="location.href='cart.html'" style="float: right;">
     <h1 onClick="location.href='main.php'">쇼핑몰</h1>
     <form action="result.php" method="post">
         <label for="product_name">검색:</label>
