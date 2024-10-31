@@ -11,7 +11,7 @@ $stmt->bind_param("s", $product_name);
 $stmt->execute();
 $result = $stmt->get_result();
 
-echo "<h1 onClick=\"location.href='main.html'\" style=\"cursor:pointer;\">쇼핑몰</h1>";
+echo "<h1 onClick=\"location.href='index.html'\" style=\"cursor:pointer;\">쇼핑몰</h1>";
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {

@@ -15,14 +15,11 @@
         echo "<span style='float: right;'>$username 님, 환영합니다!</span>";
     }
     ?>
-    
-    <input type="button" value="로그아웃" onClick="location.href='index.html'" style="float: right;">
-    <input type="button" value="장바구니" onClick="location.href='cart.html'" style="float: right;">
-    <h1 onClick="location.href='main.php'">쇼핑몰</h1>
-    <form action="result.php" method="post">
-        <label for="product_name">검색:</label>
-        <input type="text" id="product_name" name="product_name" required>
-        <input type="submit" value="검색">
-    </form>
+        <form action="result.php" method="post" style="text-align : center; float: center;  ">
+            <input type="text" id="product_name" name="product_name"  id="pin" name="pin" maxlength="200" size=100" required>
+            <input type="submit" value="검색">
+        </form>
+        <input type="button" value="로그아웃" onClick="location.href='index.html'" style="float: right;">
+        <input type="button" value="장바구니" onClick="location.href='cart.html'" style="float: right;">
 </body>
 </html>
