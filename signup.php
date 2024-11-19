@@ -1,21 +1,32 @@
 <?php
-    include 'db_connect.php'; // 데이터베이스 연결 파일 포함
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "shoppingmall_pj";
 
-    // 폼에서 전송된 데이터 받기
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$user_username = $_POST['username'];
+$user_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$user_email = $_POST['email'];
+$user_phone = $_POST['phone'];
 
-    // SQL 쿼리 작성
-    $sql = "INSERT INTO User (username, email, password) VALUES ('$username', '$email', '$password')";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->query($sql) === TRUE) {
-        header('Location: index.html'); // main.html로 리다이렉트
-        exit();
-    } else {
-        echo "회원가입 실패: " . $conn->error;
-    }
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // 데이터베이스 연결 종료
-    $conn->close();
+$sql = "CALL AddUser(?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssss", $user_username, $user_password, $user_email, $user_phone);
+
+if ($stmt->execute()) {
+    echo "회원가입이 완료되었습니다.";
+    header("Location: index.html");
+} else {
+    echo "회원가입에 실패했습니다: " . $stmt->error;
+}
+
+$stmt->close();
+$conn->close();
 ?>
